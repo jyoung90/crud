@@ -18,4 +18,17 @@ class HomeController < ApplicationController
     
     redirect_to '/posts'
   end
+  
+  def edit
+    @post = Post.find(params[:post_id])
+  end
+  
+  def update
+    post = Post.find(params[:post_id])
+    post.title = params[:title]
+    post.content = params[:content]
+    post.save
+    
+    redirect_to '/posts'
+  end
 end
